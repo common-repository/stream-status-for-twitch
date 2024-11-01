@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "luckiest-guy";
+  src: url("./LuckiestGuy-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  font-family: inherit;
+  line-height: 30px;
+  color: #fff!important;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 0 8px;
+  margin: 0 0 0 8px;
+  font-size: 12px;
+  text-transform: capitalize;
+
+  [data-bar-height="small"] & {
+    height: 27px;
+    line-height: 27px;
+  }    
+
+  i {
+    position: relative;
+    top: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+
+    svg {
+      width: 100%;
+      height: auto;
+      fill: #fff;
+      vertical-align: top;
+    }
+  }
+
+  span {
+    margin: 0 0 0 4px;
+
+    &:empty {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      display: none;
+    }
+  }
+
+  .l-stream-online &[data-status="offline"] {
+    display: none;
+  }
+}
+
+// Twitch Button
+.l-twitch-cta {
+  @extend .cta-button;
+  background-color: rgb(145, 71, 255);
+
+  &:hover {
+    background-color: rgb(119, 44, 232);
+  }
+}
+
+// Kick Button
+.l-kick-cta {
+  @extend .cta-button;
+  background-color: rgb(58, 211, 5);
+
+  &:hover {
+    background-color: rgb(83, 252, 24);
+  }
+}
+
+// YouTube Button
+.l-youtube-cta {
+  @extend .cta-button;
+  background-color: #ff0000;
+
+  &:hover {
+    background-color: #282828;
+  }
+}
+
+.swsb-loader {
+  width: 30px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(var(--swsb-text-colour, #fff) 0 0);
+  background:
+    var(--c) 0% 50%,
+    var(--c) 50% 50%,
+    var(--c) 100% 50%;
+  animation: l7 1s infinite linear alternate;
+  [data-bar-loading="0"] & {
+    display: none;
+  }
+}
+
+@keyframes l7 {
+  0% {
+    background-size:
+      20% 50%,
+      20% 50%,
+      20% 50%;
+  }
+  20% {
+    background-size:
+      20% 20%,
+      20% 50%,
+      20% 50%;
+  }
+  40% {
+    background-size:
+      20% 100%,
+      20% 20%,
+      20% 50%;
+  }
+  60% {
+    background-size:
+      20% 50%,
+      20% 100%,
+      20% 20%;
+  }
+  80% {
+    background-size:
+      20% 50%,
+      20% 50%,
+      20% 100%;
+  }
+  100% {
+    background-size:
+      20% 50%,
+      20% 50%,
+      20% 50%;
+  }
+}

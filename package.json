@@ -1,0 +1,46 @@
+{
+	"name": "streamweasels",
+	"version": "1.0.0",
+	"description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: https://www.streamweasels.com Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+	"main": "build/index.js",
+	"devDependencies": {
+		"@wordpress/scripts": "^25.4.0",
+		"autoprefixer": "^10.4.14",
+		"chokidar-cli": "^3.0.0",
+		"cssnano": "^6.0.1",
+		"mini-css-extract-plugin": "^2.9.0",
+		"nodemon": "^2.0.22",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^10.1.0",
+		"prettier": "^3.3.3",
+		"ts-loader": "^9.5.1",
+		"typescript": "^5.4.5",
+		"uglify-js": "^3.17.4",
+		"webpack": "^5.0.0",
+		"webpack-cli": "^4.0.0",
+		"webpack-dev-server": "^4.0.0",
+		"wp-scripts": "^0.0.1-security"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "wp-scripts build && npm run build:webpack",
+		"build:admin": "echo 'Building admin files...' && uglifyjs 'admin/js/streamweasels-status-bar-admin.js' --compress --mangle --output 'admin/dist/streamweasels-status-bar-admin.min.js' && node-sass 'admin/scss/streamweasels-status-bar-admin.scss' --output-style compressed --output admin/dist/ && npm run build:admin-postcss",
+		"build:admin-postcss": "echo 'Running postcss for admin CSS...' && postcss admin/dist/streamweasels-status-bar-admin.css --use autoprefixer cssnano --output admin/dist/streamweasels-status-bar-admin.min.css",
+		"build:webpack": "webpack --config webpack.config.js",
+		"watch:webpack": "WATCHPACK_POLLING=true webpack --config webpack.config.js --watch",
+		"format": "wp-scripts format",
+		"format-prettier": "prettier --write \"public/**/*.{css,scss,md}\"",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "WATCHPACK_POLLING=true wp-scripts start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@bitbucket.org/steamweasels/streamweasels-base.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"homepage": "https://bitbucket.org/steamweasels/streamweasels-base#readme"
+}
